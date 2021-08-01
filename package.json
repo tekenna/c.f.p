@@ -4,12 +4,11 @@
   "description": "cfp project",
   "main": "index.js",
   "scripts": {
-    "client-install": "npm install --prefix client",
+    "build": "cd client && npm run build",
+    "client-install": "cd client && npm install",
+    "heroku-postbuild": "npm run client-install && npm run build",
     "start": "node index.js",
-    "server": "nodemon index.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \" npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "client": "cd client && npm start"
   },
   "author": "tekenna",
   "license": "ISC",
@@ -18,5 +17,6 @@
     "express": "^4.17.1",
     "mongoose": "^5.13.3",
     "nodemon": "^2.0.12"
-  }
+  },
+  "devDependencies": {}
 }
